@@ -45,6 +45,27 @@ async function put(req, res) {
 
 }
 
+
+async function remove(req, res) { // nesse caso não podemos usar a palavra "delete" pois ela é reservada, utilizaremos "remove"
+
+    const { id } = req.params
+
+    const remove = await ProductsModel.deleteOne({ _id: id })
+
+
+    // o código abaixo poderá ser utilizado também com if ternário => const message = remove.ok ? 'success' : 'error'
+    if (!remove.ok) {
+        message = 'error'
+    }
+
+    res.send({
+        message: 'success' // caso utilizasse o if ternário, a escrita ficaria apenas "message,"
+    })
+
+}
+
+
+
 /* 
 Outra forma de fazer
 
@@ -67,5 +88,6 @@ module.exports = {
     get,
     post,
     put,
+    remove,
 }
 
