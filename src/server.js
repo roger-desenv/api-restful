@@ -25,9 +25,16 @@ app.set('views', path.join(__dirname,'views'))
 app.use(express.static(path.join(__dirname,'public')))
 ========= */ 
 
+// habilita server para receber dados no formato json
+app.use (express.json())
+
+/*========
+//No API-Restful não receberemos dados vindos de um formulário, receberemos diretamente no corpo da requisição.
+
 
 //habilita server para receber dados via post (formulário)
 app.use (express.urlencoded({ extended: true }))
+=========*/
 
 
 //definindo as rotas
